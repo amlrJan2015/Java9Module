@@ -1,7 +1,9 @@
 package de.janitza.amlr.operations.plus;
 
-public class Plus {
-	public static int compute(final int a, final int b){
+import de.janitza.amlr.operations.spi.OperationsProvider;
+
+public class Plus implements OperationsProvider{
+	public int compute(final int a, final int b){
 		return a+b;
 	}
 }
