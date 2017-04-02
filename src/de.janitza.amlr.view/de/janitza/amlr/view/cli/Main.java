@@ -1,9 +1,15 @@
 package de.janitza.amlr.view.cli;
 
-import de.janitza.amlr.operations.plus.Plus;
+import de.janitza.amlr.operations.spi.Operation;
+import java.util.ServiceLoader;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("CLI View:" + Plus.compute(1, 2));
+        final int a = 1, b = 2;
+        final ServiceLoader<Operation> serviceLoader =
+        ServiceLoader.load(Operation.class);
+        serviceLoader.forEach(op -> {
+            System.out.println(op.compute(a,b));
+        });
     }
 }
